@@ -24,7 +24,7 @@ def login_view(request):
         # Check if authentication was successful
         if user is not None:
             login(request, user, backend="django.contrib.auth.backends.ModelBackend")
-            return HttpResponseRedirect(reverse("index"))
+            return redirect(forum:list)
         else:
             return render(request, "users/login.html", {
                 "error_message": "Invalid email and/or password."
@@ -68,7 +68,7 @@ def register(request):
         
         #if no error occurs, the user is logged in
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        return HttpResponseRedirect(reverse("index"))
+        return redirect(forum:list)
     
     else: # request.method == 'GET'
         return render(request, "users/register.html")
