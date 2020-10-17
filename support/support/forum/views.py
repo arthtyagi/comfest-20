@@ -9,7 +9,7 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from support.support.support.mixins import PageTitleMixin
+from support.mixins import PageTitleMixin
 
 
 def home(request):

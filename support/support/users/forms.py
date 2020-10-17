@@ -15,7 +15,7 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['image', 'about', 'githubusername']
+        fields = ['image', 'about', ]
         labels = {
             'image': 'Profile Pic (500x500 is preferred resolution)',
             'about': 'About you (max 200 words)',

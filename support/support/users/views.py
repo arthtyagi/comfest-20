@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm, ProfileUpdateForm
 from django.views.generic import DetailView, ListView, RedirectView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from support.support.support.mixins import PageTitleMixin
+from support.mixins import PageTitleMixin
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
