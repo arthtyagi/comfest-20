@@ -8,10 +8,10 @@ from django.utils.crypto import get_random_string
 
 
 class Query(models.Model):
-    CATEGORY = [('General Development', 'General Development'),
-                ('Web Development', 'Web Development'),
-                ('CS', 'Computer Science'),
-                ('About DomeCode', 'About DomeCode')]
+    CATEGORY = [('Mental Health', 'Mental Health'),
+                ('Physical Health', 'Physical Health'),
+                ('Experience', 'Experience'),
+                ('Post Covid-19', 'Post Covid-19')]
 
     title = models.CharField(max_length=240)
     user = models.ForeignKey(get_user_model(),
@@ -112,6 +112,7 @@ class Comment(models.Model):
     kwargs.slug and possibly answer slug as aslug. make respective changes
     in urls.py too
     """
+
     def get_absolute_url(self):
         return reverse('forum:detail', kwargs={'slug': self.answer.query.slug})
 
