@@ -11,6 +11,10 @@ flask = "*"
 sklearn = "*"
 pandas = "*"
 numpy = "*"
+django-restframework = "*"
+djangorestframework = "*"
+django-crispy-forms = "*"
+social-auth-app-django = "*"
 
 [requires]
 python_version = "3.8"

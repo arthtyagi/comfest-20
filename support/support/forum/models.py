@@ -8,10 +8,10 @@ from django.utils.crypto import get_random_string
 
 
 class Query(models.Model):
-    CATEGORY = [('General Development', 'General Development'),
-                ('Web Development', 'Web Development'),
-                ('CS', 'Computer Science'),
-                ('About DomeCode', 'About DomeCode')]
+    CATEGORY = [('Experience', 'Experience'),
+                ('Post Covid Issues', 'Post Covid Issues'),
+                ('Mental Health', 'Mental Health'),
+                ('Physical Health', 'Physical Health')]
 
     title = models.CharField(max_length=240)
     user = models.ForeignKey(get_user_model(),
@@ -22,7 +22,8 @@ class Query(models.Model):
                                    default=None,
                                    blank=True,
                                    related_name="query_likes")
-    category = models.CharField(max_length=30, choices=CATEGORY, default='GEN')
+    category = models.CharField(
+        max_length=30, choices=CATEGORY, default='Experience')
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     slug = models.SlugField(null=True, unique=True, max_length=256)
