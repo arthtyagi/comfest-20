@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <p>Signed in as {{user.username}}</p>
+    <form action="{% url 'register' %}" method = "POST">
+        {% csrf_token %}
+        <div>
+            <input type="text" name="first_name" placeholder = "First Name">
+        </div>
+        <div>
+            <input type="text" name="last_name" placeholder = "Last Name">
+        </div>
+        <div>
+            <input type="text" name="username" placeholder = "Username">
+        </div>
+        <div>
+            <input type="text" name="email" placeholder = "Email">
+        </div>
+        <div>
+            <input type="password" name="password" placeholder = "Password">
+        </div>
+        <div>
+            <input type="password" name="confirmation" placeholder = "Type password again">
+        </div>
+        <input type="submit" value="Register">
+    </form>
+    
+    {% if error_message %}
+        <p style = "color:red">{{error_message}}</p>
+    {% endif %}
+    <br>
+    Already have an account? <a href="{% url 'login' %}">Login</a>
+</body>
+</html>

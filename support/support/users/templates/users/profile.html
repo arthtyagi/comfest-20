@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile: {{account.user.username}}</title>
+</head>
+<body>
+    Signed in as {{user.username}}
+    <h1>Profile of {{account.user.username}}</h1>
+    <div>
+        <img src="{{media_url}}{{account.image}}" alt="Profile picture">
+    </div>
+    <p>First Name: {{account.user.first_name}}</p>
+    <p>Last Name: {{account.user.last_name}}</p>
+    <p>Community Points: {{account.community_points}}</p>
+    <p>About: {{account.about}}</p>
+
+    {% if user == account.user %}
+    <button><a href="{% url 'profile_change' user.username %}">Change Profile Settings</a></button>
+    {% endif %}
+
+    
+    {% if error_message %}
+        <p style="color:red">{{error_message}}</p>
+    {% endif %}
+        
+</body>
+</html>

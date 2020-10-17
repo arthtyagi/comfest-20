@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Settings: {{user.username}}</title>
+</head>
+<body>
+    <p>Signed in as {{user.username}}</p>
+    <form action="{% url 'profile_change' user.username %}" method = "POST">
+        {% csrf_token %}
+        <div>
+            <input type="text" name="first_name" value = {{user.first_name}}>
+        </div>
+        <div>
+            <input type="text" name="last_name" value = {{user.last_name}}>
+        </div>
+        <div>
+            <input type="text" name="about" value = {{profile.about}}>
+        </div>
+        <div>
+            <label for="img">Select image for profile picture:</label>
+            <input type="file" id="img" name="image" accept="image/*">
+        </div>
+        <input type="submit" value="Save Changes">
+    </form>
+    
+    {% if error_message %}
+        <p style = "color:red">{{error_message}}</p>
+    {% endif %}
+</body>
+</html>
