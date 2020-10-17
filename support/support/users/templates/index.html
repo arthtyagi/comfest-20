@@ -1,17 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support - A Supper thing</title>
-</head>
-<body>
-    <h1>Welcome to Supper support. You suck ass for testing positive. Go eat dixxxxxx.</h1>
+{% extends 'layout.html' %}
+{% load static %}
 
-    {% if user.is_authenticated %}
-        <p>You are logged in as {{user.first_name}}</p>
-    {% else %}
-        <p>You are not logged in. <a href="{% url 'login' %}">Login</a></p>
-    {% endif %}
-</body>
-</html>
+{% block title %}Support - Community by Supper {% endblock %}
+
+{% block body %}
+<div class="page-hero-section bg-image hero-home-1" style="background-image: url(/static/img/bg_hero_1.svg);">
+  <div class="hero-caption pt-5">
+    <div class="container h-100">
+      <div class="row align-items-center h-100">
+        <div class="col-lg-6 wow fadeInUp">
+          <div class="badge mb-2"><span class="icon mr-1"><span class="mai-globe"></span></span>Support - Online community provided by Supper Suite</div>
+          <h1 class="mb-4">An online community to keep you healthy.</h1>
+          <p class="mb-4">Support has blog posts, tips, updates<br>
+          from patients and doctors to keep you healthy.</p>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block wow zoomIn" style="visibility: visible; animation-name: zoomIn;">
+            <div class="img-place mobile-preview shadow floating-animate">
+              <img src="{% static 'img/app_preview_1.png' %}" alt="">
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="position-realive bg-image" style="background-image: url(/static/img/pattern_1.svg);">
+
+<div class="page-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 py-3 mt-lg-5">
+        <div class="iconic-list">
+          <div class="iconic-item wow fadeInUp">
+            <div class="iconic-md iconic-text bg-warning fg-white rounded-circle">
+              <span class="mai-cube"></span>
+            </div>
+            <div class="iconic-content">
+              <h5>Community Support</h5>
+              <p class="fs-small">Get to know people who have been through, or are going through your situation.</p>
+            </div>
+          </div>
+          <div class="iconic-item wow fadeInUp">
+            <div class="iconic-md iconic-text bg-info fg-white rounded-circle">
+              <span class="mai-shield"></span>
+            </div>
+            <div class="iconic-content">
+              <h5>Fully Secured</h5>
+              <p class="fs-small">All your data, in place, secure.</p>
+            </div>
+          </div>
+          <div class="iconic-item wow fadeInUp">
+            <div class="iconic-md iconic-text bg-indigo fg-white rounded-circle">
+              <span class="mai-desktop-outline"></span>
+            </div>
+            <div class="iconic-content">
+              <h5>Cross Platform</h5>
+              <p class="fs-small">Available on all devices!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-1 py-3 mt-lg-5 wow fadeInUp">
+        <h1 class="mb-4">Register</h1>
+        <p class="mb-4">Sign up today to gain advantage by acquainting yourself with pointers, hacks, needs, directions to a faster, healthier recovery!</p>
+        <a href="{% url 'register' %}" class="btn btn-outline-primary rounded-pill">Register</a>
+      </div>
+      <div class="col-lg-5 py-3">
+        <div class="img-place mobile-preview shadow wow zoomIn">
+          <img src="{% static 'img/app_preview_3.png' %}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div class="page-section bg-dark fg-white">
+  <div class="container">
+    <h1 class="text-center">Other apps from Supper Suite</h1>
+
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6 col-lg-3 py-3">
+        <div class="card card-body border-0 bg-transparent text-center wow zoomIn">
+          <div class="mb-3">
+            <img src="{% static 'img/icons/rocket.svg' %}" alt="">
+          </div>
+          <p class="fs-large">COVID - 19 Predictor</p>
+          <p class="fs-small fg-grey">Predicts chances of you having corona - based on AI.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 py-3">
+        <div class="card card-body border-0 bg-transparent text-center wow zoomIn" data-wow-delay="200ms">
+          <div class="mb-3">
+            <img src="{% static 'img/icons/testimony.svg' %}" alt="">
+          </div>
+          <p class="fs-large">Information App</p>
+          <p class="fs-small fg-grey">Get steps to self-quarantine, and get through the time fruitfully.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 py-3 mb-5 mb-lg-0">
+        <div class="img-place w-lg-75 wow zoomIn">
+          <img src="{% static 'img/illustration_contact.svg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-5 py-3">
+        <h1 class="wow fadeInUp">Need help? <br>
+        Don't worry just contact us</h1>
+
+        <form method="POST" class="mt-5">
+          <div class="form-group wow fadeInUp">
+            <label for="name" class="fw-medium fg-grey">Full Name</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+
+          <div class="form-group wow fadeInUp">
+            <label for="email" class="fw-medium fg-grey">Email</label>
+            <input type="text" class="form-control" id="email">
+          </div>
+
+          <div class="form-group wow fadeInUp">
+            <label for="message" class="fw-medium fg-grey">Message</label>
+            <textarea rows="6" class="form-control" id="message"></textarea>
+          </div>
+
+          <div class="form-group mt-4 wow fadeInUp">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
