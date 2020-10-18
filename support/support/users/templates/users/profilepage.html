@@ -1,0 +1,63 @@
+{% extends "Forum/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content-section shadow">
+
+    <div class="media">
+        <img class="rounded-circle account-img" src="{{profile.image.url }}">
+        <a class="badge badge-light badge-pill"
+            href="{%url 'users:profilepage' profile.slug%}">{{profile.user.username}}</a>
+    </div>
+    <div class="media-body">
+        {%if request.user.username == profile.user.username%}
+        <a class="btn badge btn-sm badge-pill badge-dark " href="{% url 'users:profile' %}">Edit ✏️️</a>
+        {%endif%}
+        <h3 class="account-heading">{{ profile.user.first_name }}</h3>
+        <p class="text-secondary">{{ profile.user.email }}</p>
+        <p class="badge badge-pill"
+            style="font-size: larger; color: rgb(235, 192, 99); background-color: rgb(26, 26, 26);">
+            Points:
+            {{profile.domes}}</p>
+
+        {%if request.user.id is not profile.user.id%}
+        <p id="follow" class="badge badge-pill" <a data-href="{%url 'users:profile-follow-api-toggle' profile.slug%}"
+            data-followers="{{profile.followers.count}}" href="{%url 'users:profile-follow-toggle' profile.slug%}"
+            style="font-size: larger;
+      color: rgb(235, 192, 99); background-color: rgb(26, 26, 26);">
+            {{profile.followers.count}} Followers</p>
+        {% if request.user.id in profile.followers_as_flat_user_id_list %}
+        <span class="badge badge-dark badge-pill">Followed</span>
+        {%endif%}
+        {%else%}
+        <p class="badge badge-pill" <a style="font-size: larger;
+      color: rgb(235, 192, 99); background-color: rgb(26, 26, 26);">
+            {{profile.followers.count}} Followers</p>
+        {%endif%}
+
+        <h3>About</h3>
+        {%if profile.about is not None%}
+        <p>{{profile.about}}</p>
+        {%else%}
+        <small class='text-muted'>
+            <p>This person doesn't have their About filled up.</p>
+        </small>
+
+        {%endif%}
+    </div>
+
+    <br>
+    {%if request.user.username == profile.user.username%}
+    <div class="card-deck">
+        <div class="row">
+            <div class="col-sm">
+                <a href="{%url 'logout'%}" class="btn btn-danger btn-sm">Logout</a>
+            </div>
+        </div>
+    </div>
+    {%endif%}
+
+</div>
+
+
+{% endblock content %}

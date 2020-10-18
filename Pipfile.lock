@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "cd17095060cb320439841cef25020285f17c1d35f1fa8c422699a3d54094234b"
+            "sha256": "fa4fe42083670d2652f8383b82c6b710d4ec1a2f13b2eb46c6cdd1ee616f7e53"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -130,6 +130,13 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==3.1.2"
+        },
+        "django-allauth": {
+            "hashes": [
+                "sha256:0bfb975fe46e8bff67effb3fa46dea5acd7c66140cb78b5ed92c533f639898e2"
+            ],
+            "index": "pypi",
+            "version": "==0.43.0"
         },
         "django-ckeditor": {
             "hashes": [
@@ -357,6 +364,9 @@
             "version": "==2.20"
         },
         "pyjwt": {
+            "extras": [
+                "crypto"
+            ],
             "hashes": [
                 "sha256:5c6eca3c2940464d106b99ba83b00c6add741c9becaec087fb7ccdefea71350e",
                 "sha256:8d59a976fb773f3e6a39c85636357c4f0e242707394cadadd9814f5cbaa20e96"
@@ -370,6 +380,15 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==2.8.1"
+        },
+        "python-social-auth": {
+            "hashes": [
+                "sha256:854422799784e0ffb258a8e17cf5f5708d77fa6993b57bd5197e415ad055383f",
+                "sha256:990868e5518b16e84361829700aef552185e056a82b2a6a6a9b037279643a112",
+                "sha256:c4dd52bf3da4b9c9cfe2b79727d37a2ec6c34b50336fed54aec5811c134d0496"
+            ],
+            "index": "pypi",
+            "version": "==0.2.21"
         },
         "python3-openid": {
             "hashes": [

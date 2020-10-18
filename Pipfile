@@ -17,6 +17,8 @@ django-crispy-forms = "*"
 social-auth-app-django = "*"
 django-ckeditor = "*"
 pillow = "*"
+python-social-auth = "==0.2.21"
+django-allauth = "*"
 
 [requires]
 python_version = "3.8"

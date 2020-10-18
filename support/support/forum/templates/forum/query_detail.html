@@ -1,0 +1,68 @@
+{% extends "forum/base.html" %}
+{%load forumtags%}
+{% block content %}
+<p><a href="{%url 'forum:list'%}">Go Back</a></p>
+<article class="media content-section shadow">
+    <a href="{%url 'users:profilepage' object.user.profile.slug%}"><img class="rounded-circle article-img"
+            src="{{ object.user.profile.image.url }}" /></a>
+    <div class="media-body">
+        <div class="article-metadata">
+            <small class="text-muted">{{ object.created|date:"F d, Y" }}</small>
+            <span class="badge badge-light badge-pill">{{object.category}}</span>
+
+            {% if object.user == user %}
+            <div>
+                <small> <a class="badge badge-dark badge-pill" href="{% url 'forum:query-update' query.slug %}">Edit
+                        ✏️️</a> <a class="badge badge-danger badge-pill"
+                        href="{% url 'forum:query-delete' query.slug %}">Delete</a></small>
+            </div>
+            {% endif %}
+        </div>
+        <h2 class="article-title">{{ object.title }}</h2>
+        <button name="badge-info" id="like" class="badge badge-danger badge-pill" <a
+            data-href="{%url 'forum:query-likes-api-toggle' object.slug%}" data-likes="{{object.likes.count}}"
+            href="{%url 'forum:query-likes-toggle' object.slug%}" class="btn btn-info btn-sm">{{object.likes.count}}
+            Likes
+            </a></button>
+        {% if request.user.id in object.likes_as_flat_user_id_list %}
+        <span class="badge badge-dark badge-pill">Liked</span>
+        {%endif%}
+        <br><br>
+        {{object.content|safe}}
+    </div>
+</article>
+<span class="badge badge-dark badge-pill"> <a class="nav-item nav-link"
+        href="{%url 'forum:answer-create' query.slug%}">Submit
+        Answer</a></span>
+
+
+
+{%for answer in object|answers%}
+{%if answer.user == user%}
+<div class="media-body shadow">
+    <p>{{answer.content|safe}}</p>
+    <small>
+        <p> by <a href="{%url 'users:profilepage' answer.user.profile.slug %}">{{answer.user}}</a></p>
+    </small>
+
+    <small> <a class="badge badge-dark badge-pill" href="{% url 'forum:answer-update' query.slug answer.slug %}">Edit
+            ✏️️</a> <a class="badge badge-danger badge-pill"
+            href="{% url 'forum:answer-delete' query.slug answer.slug %}">Delete</a></small>
+    <br><br>
+
+</div>
+
+
+{%else%}
+<div class="media-body shadow">
+    <p>{{answer.content|safe}}</p>
+    <small>
+        <p> by <a href="{%url 'users:profilepage' answer.user.profile.slug %}">{{answer.user}}</a></p>
+    </small>
+
+</div>
+{%endif%}
+{%endif%} 
+{%endif%}
+{%endfor%}
+{% endblock content %}

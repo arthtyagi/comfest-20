@@ -1,0 +1,148 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="shortcut icon" type="image/png" href="{%static 'assets/favicon.ico'%}" />
+<meta name="monetization" content="$ilp.uphold.com/DFYMWhkmjUND" />
+
+<head>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+        integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <script src=" https://kit.fontawesome.com/a076d05399.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/konpa/devicon@master/devicon.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" /> 
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,300;0,400;1,200;1,300;1,400&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Flavors&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="{%static 'forum/style.css'%}" />
+
+
+    {% if title %}
+    <title>Supper - {{ title }}</title>
+    {%else%}
+    <title>Supper Community - The place for you to go after COVID hits you :)</title>
+    {%endif%}
+</head>
+
+<body>
+    <script src="{%static 'js/script.js'%}"></script>
+
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg py-0 navbar-dark fixed-top shadow the-blur">
+            <div class="container-fluid">
+                <a class="navbar-brand mr-3" style="
+              font-weight: bolder;
+              font-size: 22px;
+              background: linear-gradient(to right, #f12711, #f5af19);
+              -webkit-background-clip: text;
+              background-clip: text;
+              -webkit-text-fill-color: transparent;
+            " href="{%url 'forum:home'%}">Supper</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarToggle">
+
+
+                    <!-- Navbar Right Side -->
+                    <div class="collapse navbar-collapse" id="navbarToggle">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{%url 'forum:list'%}">Forum</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                {%if user.is_authenticated%}
+
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                    <img class="rounded-circle profile-img img-fluid" src="{{user.profile.image.url }}"
+                                        alt="Profile Picture" />
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item"
+                                        href="{%url 'users:profilepage' user.profile.slug%}">Profile 👋</a>
+
+
+                                    <a class="dropdown-item" href="{%url 'users:profile'%}">Settings ⚙️</a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="dropdown-item" href="{%url 'logout'%}">Logout 🚪</a>
+
+                                    {%else%}
+                                    <a class="nav-link" href="{%url 'login'%}">Login 🚀</a>
+                                    {%endif%}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div role="main" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {%if messages%}{%for message in messages%}
+                <div class="alert alert-{{message.tags}}">{{message}}</div>
+                {%endfor%} {%endif%} {% block content %}{% endblock %}
+                {{ block.super }}
+                {% block extra_js %}{% endblock extra_js %}
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <footer class="footer shadow">
+        <div class="container">
+            <center> <span class="text-muted">&#169;
+                    2020. Supper. All rights reserved. A
+                    <a target="_blank" href="https://github.com/arthtyagi" rel="noopener">CF 09</a>
+                    production. </span>
+            </center>
+        </div>
+    </footer>
+    <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" /></noscript>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>

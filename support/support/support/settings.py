@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'crispy_forms',
+    'social_django',
 
 ]
 REST_FRAMEWORK = {
@@ -69,6 +70,7 @@ MIDDLEWARE = [
     # OAUTH
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
+
 
 ROOT_URLCONF = 'support.urls'
 
@@ -162,3 +164,14 @@ LOGIN_URL = 'login'
 
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+SOCIAL_AUTH_GITHUB_KEY = 'ae6b186b1e01c6cdc908'
+SOCIAL_AUTH_GITHUB_SECRET = '186a7f41047eafd795ca5c2daeaf6a0d850cc349'
+SOCIAL_AUTH_GITHUB_SCOPE = ['user:email']

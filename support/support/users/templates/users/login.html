@@ -1,0 +1,31 @@
+{% extends "forum/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="content-section shadow" style="text-align: center;">
+
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md oauth-box">
+                <div class="badge badge-dark badge-pill">
+                    {%if request.GET.next %}
+                    <a style="color:rgb(255, 255, 255);font-size:18px ;" class="nav-item nav-link"
+                        href="{% url 'social:begin' 'github' %}?next={{ request.GET.next }}">
+                        Login with Github <i class="fab fa-github"></i>
+                    </a>
+                    {%else%}
+                    <a style="color:rgb(255, 255, 255);font-size:18px ;" class="nav-item nav-link"
+                        href="{% url 'social:begin' 'github' %}?next={{ request.GET.next }}/">
+                        Login with Github <i class="fab fa-github"></i></a>
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
+</div>
+{% endblock content %}
